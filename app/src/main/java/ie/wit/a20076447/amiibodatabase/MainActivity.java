@@ -4,11 +4,8 @@ import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,8 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 import ie.wit.a20076447.amiibodatabase.Amiibo;
 
@@ -39,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextViewResult = findViewById(R.id.textView_result);
+        //mTextViewResult = findViewById(R.id.textView_result);
         Button buttonParse = findViewById(R.id.button_parse);
 
         listView = findViewById(R.id.listView_result);
@@ -53,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 fillListView();
             }
         });
 
+
+    }
+
+    public void nextScreen(View view) {
 
     }
 
