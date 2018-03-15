@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/list_AmiiboName"
-        android:layout_width="wrap_content"
+        android:id="@+id/list_amiiboName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Name"
         android:textColor="@android:color/holo_orange_dark"
-        android:textStyle="bold"
         android:textSize="15sp" />
 
     <TextView
         android:id="@+id/list_gameSeries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="game" />
 
     <TextView
         android:id="@+id/list_amiiboSeries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="amiiboseries" />
 
     <TextView
         android:id="@+id/list_headID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HeadID"
+
+        />
 
     <TextView
         android:id="@+id/list_tailID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TailID" />
+
+    <TextView
+        android:id="@+id/list_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image" />
 
 </android.widget.LinearLayout>

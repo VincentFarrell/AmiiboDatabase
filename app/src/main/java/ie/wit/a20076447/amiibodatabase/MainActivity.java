@@ -1,5 +1,6 @@
 package ie.wit.a20076447.amiibodatabase;
 
+import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,56 +19,61 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.List;
 
+import ie.wit.a20076447.amiibodatabase.Amiibo;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextViewResult;
+    private ListView listView;
     private RequestQueue mQueue;
-    private ListView listView1;
 
-    ArrayList<HashMap<String, String>> amiiboList;
+    private ArrayList<Amiibo> amiiboList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mTextViewResult = findViewById(R.id.textView_result);
+        mTextViewResult = findViewById(R.id.textView_result);
         Button buttonParse = findViewById(R.id.button_parse);
 
-        amiiboList = new ArrayList<>();
+        listView = findViewById(R.id.listView_result);
 
-        listView1 = (ListView) findViewById(R.id.listView_result);
 
         mQueue = Volley.newRequestQueue(this);
+
+        jsonParse();
 
         buttonParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jsonParse();
+
+
+                fillListView();
             }
         });
+
+
     }
 
 
     private void jsonParse() {
-        String url = "https://api.myjson.com/bins/7ax9h";
+        String url = "http://www.amiiboapi.com/api/amiibo/";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray = response.getJSONArray("amiibos");
+                            JSONArray jsonArray = response.getJSONArray("amiibo");
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject amiibos = jsonArray.getJSONObject(i);
 
-
-                                //JSON Objects
                                 String amiiboSeries = amiibos.getString("amiiboSeries");
                                 String character = amiibos.getString("character");
                                 String gameSeries = amiibos.getString("gameSeries");
@@ -75,39 +81,23 @@ public class MainActivity extends AppCompatActivity {
                                 String image = amiibos.getString("image");
                                 String amiiboName = amiibos.getString("name");
 
-                                //Nested JSON Object
                                 JSONObject nestObj = amiibos.getJSONObject("release");
                                 String au = nestObj.getString("au");
                                 String eu = nestObj.getString("eu");
                                 String jp = nestObj.getString("jp");
                                 String na = nestObj.getString("na");
 
-                                //JSON Objects
                                 String tailID = amiibos.getString("tail");
                                 String type = amiibos.getString("type");
 
-                                HashMap<String, String> amiibo = new HashMap<>();
-
-                                amiibo.put("AmiiboName", amiiboName);
-                                amiibo.put("AmiiboSeries", amiiboSeries);
-                                amiibo.put("GameSeries", gameSeries);
-                                amiibo.put("HeadID", headID);
-                                amiibo.put("TailID", tailID);
-
+                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
                                 amiiboList.add(amiibo);
 
 
-                                //mTextViewResult.append(amiiboName + " - " + amiiboSeries + " (" + gameSeries + ") " + headID + tailID);
-
-                                ListAdapter adapter = new SimpleAdapter(
-                                        MainActivity.this, amiiboList,
-                                        R.layout.list_item_rows, new String[]{"AmiiboName", "AmiiboSeries",
-                                        "GameSeries", "HeadID", "TailID"}, new int[]{R.id.list_AmiiboName,
-                                        R.id.list_amiiboSeries, R.id.list_gameSeries, R.id.list_headID, R.id.list_tailID});
-
-                                listView1.setAdapter(adapter);
 
 
+
+                                //mTextViewResult.append(amiibo.toString());
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -122,4 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
         mQueue.add(request);
     }
+
+    private void fillListView() {
+
+        CustomAdapter myCustomAdapter = new CustomAdapter(MainActivity.this, amiiboList);
+        listView.setAdapter(myCustomAdapter);
+    }
+
+
 }
