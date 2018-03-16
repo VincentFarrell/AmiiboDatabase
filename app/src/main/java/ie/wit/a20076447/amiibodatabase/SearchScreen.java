@@ -1,77 +1,59 @@
 package ie.wit.a20076447.amiibodatabase;
 
-import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextViewResult;
-    private ListView listView;
+public class SearchScreen extends AppCompatActivity {
+
     private RequestQueue mQueue;
+    private ListView listView;
 
-    private ArrayList<Amiibo> amiiboList = new ArrayList<>();
+    private ArrayList<Amiibo> amiiboSearchList = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_searchscreen);
 
-        //mTextViewResult = findViewById(R.id.textView_result);
-        Button buttonParse = findViewById(R.id.button_parse);
-        Button buttonNext = findViewById(R.id.buttonSearch);
+        configureBackButton();
 
         listView = findViewById(R.id.listView_result);
 
+
         mQueue = Volley.newRequestQueue(this);
 
-        configureButton();
-
-        jsonParse();
-
-        buttonParse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                fillListView();
-            }
-        });
-
-
     }
 
-    private void configureButton() {
-
-        Button switchButton = (Button)findViewById(R.id.buttonSearch);
-        switchButton.setOnClickListener(new View.OnClickListener() {
+    private void configureBackButton() {
+        Button backButton = (Button)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SearchScreen.class));
-
+                finish();
             }
         });
     }
-
 
     private void jsonParse() {
-        String url = "http://www.amiiboapi.com/api/amiibo/";
+        String url = "http://www.amiiboapi.com/api/amiibo/?name=";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -99,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                 String type = amiibos.getString("type");
 
                                 Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
-                                amiiboList.add(amiibo);
+                                amiiboSearchList.add(amiibo);
 
 
 
@@ -119,12 +101,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mQueue.add(request);
-    }
-
-    private void fillListView() {
-
-        CustomAdapter myCustomAdapter = new CustomAdapter(MainActivity.this, amiiboList);
-        listView.setAdapter(myCustomAdapter);
     }
 
 

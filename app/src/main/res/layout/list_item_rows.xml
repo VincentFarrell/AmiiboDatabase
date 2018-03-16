@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <ImageButton
+        android:id="@+id/list_image"
+        android:layout_width="100dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/background"
+        android:text="Image" />
 
     <TextView
         android:id="@+id/list_amiiboName"
@@ -10,38 +23,44 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/list_image"/>
 
     <TextView
         android:id="@+id/list_gameSeries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="game" />
+        android:text="game"
+        android:layout_toRightOf="@+id/list_image"
+        android:layout_below="@+id/list_amiiboName"/>
 
     <TextView
         android:id="@+id/list_amiiboSeries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="amiiboseries" />
+        android:text="amiiboseries"
+        android:layout_toRightOf="@+id/list_image"
+        android:layout_below="@+id/list_gameSeries"/>
 
     <TextView
         android:id="@+id/list_headID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HeadID"
-
+        android:layout_toRightOf="@+id/list_image"
+        android:layout_below="@+id/list_amiiboSeries"
         />
+
 
     <TextView
         android:id="@+id/list_tailID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/list_headID"
+        android:layout_alignBottom="@+id/list_headID"
+        android:layout_marginStart="96dp"
+        android:layout_toEndOf="@+id/list_image"
         android:text="TailID" />
 
-    <TextView
-        android:id="@+id/list_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Image" />
 
-</android.widget.LinearLayout>
+</android.widget.RelativeLayout>

@@ -13,7 +13,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/button_art"
 
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -30,6 +30,15 @@
     <!--android:layout_height="wrap_content"-->
     <!--android:textSize="20sp"-->
     <!--android:textColor="@android:color/black" />-->
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/search_icon" />
 
     <Button
         android:id="@+id/button_parse"

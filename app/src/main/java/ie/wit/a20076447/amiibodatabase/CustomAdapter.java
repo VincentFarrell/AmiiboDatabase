@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -52,14 +53,14 @@ public class CustomAdapter extends BaseAdapter{
         TextView list_amiiboSeries = (TextView)view.findViewById(R.id.list_amiiboSeries);
         TextView list_headID = (TextView)view.findViewById(R.id.list_headID);
         TextView list_tailID = (TextView)view.findViewById(R.id.list_tailID);
-        TextView list_image  = (TextView)view.findViewById(R.id.list_image);
+        ImageButton list_image  = (ImageButton) view.findViewById(R.id.list_image);
 
         list_amiiboName.setText(tempAmiibo.getAmiiboName());
         list_gameSeries.setText(tempAmiibo.getGameSeries());
         list_amiiboSeries.setText(tempAmiibo.getAmiiboSeries());
         list_headID.setText(tempAmiibo.getHeadID());
         list_tailID.setText(tempAmiibo.getTailID());
-        list_image.setText(tempAmiibo.getImage());
+        //list_image.setImageDrawable(tempAmiibo.getImage());
 
 
 
