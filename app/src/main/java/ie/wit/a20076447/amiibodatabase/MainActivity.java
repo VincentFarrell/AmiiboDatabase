@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextViewResult;
     private ListView listView;
     private RequestQueue mQueue;
 
@@ -34,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mTextViewResult = findViewById(R.id.textView_result);
         Button buttonParse = findViewById(R.id.button_parse);
-        Button buttonNext = findViewById(R.id.buttonSearch);
 
         listView = findViewById(R.id.listView_result);
 
@@ -44,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         configureButton();
 
+        amiiboList.clear();
         jsonParse();
 
         buttonParse.setOnClickListener(new View.OnClickListener() {

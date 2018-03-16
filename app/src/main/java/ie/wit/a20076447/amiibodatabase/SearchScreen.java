@@ -1,9 +1,13 @@
 package ie.wit.a20076447.amiibodatabase;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -24,6 +28,7 @@ public class SearchScreen extends AppCompatActivity {
 
     private RequestQueue mQueue;
     private ListView listView;
+    private String searchInput ="";
 
     private ArrayList<Amiibo> amiiboSearchList = new ArrayList<>();
 
@@ -36,6 +41,45 @@ public class SearchScreen extends AppCompatActivity {
         configureBackButton();
 
         listView = findViewById(R.id.listView_result);
+
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SearchScreen.this);
+
+        builder.setTitle("Search Amiibos");
+        builder.setMessage("Enter Amiibo Name:");
+
+        final EditText input = new EditText(this);
+
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+
+        builder.setView(input);
+
+        builder.setCancelable(true);
+        builder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                searchInput = input.getText().toString();
+
+                amiiboSearchList.clear();
+
+                jsonParseSearch();
+
+            }
+        });
+
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                dialogInterface.cancel();
+                finish();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
 
         mQueue = Volley.newRequestQueue(this);
@@ -52,8 +96,8 @@ public class SearchScreen extends AppCompatActivity {
         });
     }
 
-    private void jsonParse() {
-        String url = "http://www.amiiboapi.com/api/amiibo/?name=";
+    private void jsonParseSearch() {
+        String url = "http://www.amiiboapi.com/api/amiibo/?character=" + searchInput;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -80,14 +124,13 @@ public class SearchScreen extends AppCompatActivity {
                                 String tailID = amiibos.getString("tail");
                                 String type = amiibos.getString("type");
 
+
+
                                 Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
                                 amiiboSearchList.add(amiibo);
 
 
-
-
-
-                                //mTextViewResult.append(amiibo.toString());
+                                fillListView();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -103,5 +146,10 @@ public class SearchScreen extends AppCompatActivity {
         mQueue.add(request);
     }
 
+    private void fillListView() {
+
+        CustomAdapter myCustomAdapter = new CustomAdapter(SearchScreen.this, amiiboSearchList);
+        listView.setAdapter(myCustomAdapter);
+    }
 
 }
