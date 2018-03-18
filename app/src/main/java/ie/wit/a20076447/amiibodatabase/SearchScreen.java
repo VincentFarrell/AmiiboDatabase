@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,6 +30,9 @@ public class SearchScreen extends AppCompatActivity {
     private RequestQueue mQueue;
     private ListView listView;
     private String searchInput ="";
+    private int choice;
+    private CharSequence[] values = {" Search By Name "," Search By Amiibo ID "," Search By Game Series "};
+    private String url;
 
     private ArrayList<Amiibo> amiiboSearchList = new ArrayList<>();
 
@@ -46,7 +50,27 @@ public class SearchScreen extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(SearchScreen.this);
 
         builder.setTitle("Search Amiibos");
-        builder.setMessage("Enter Amiibo Name:");
+
+        builder.setSingleChoiceItems(values, -1, new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int item) {
+
+                switch(item)
+                {
+                    case 0:
+                        choice = item;
+                        break;
+                    case 1:
+                        choice = item;
+                        break;
+                    case 2:
+                        choice = item;
+                        break;
+                }
+                builder.setMessage("Please Choose Type");
+            }
+        });
+
 
         final EditText input = new EditText(this);
 
@@ -97,7 +121,24 @@ public class SearchScreen extends AppCompatActivity {
     }
 
     private void jsonParseSearch() {
-        String url = "http://www.amiiboapi.com/api/amiibo/?character=" + searchInput;
+        if(choice == 0){
+            String url = "http://www.amiiboapi.com/api/amiibo/?character=" + searchInput;
+            this.url = url;
+        }
+        else
+        if(choice == 1){
+            String url = "http://www.amiiboapi.com/api/amiibo/?head=" + searchInput;
+            this.url = url;
+        }
+        else
+        if(choice == 2){
+            String url = "http://www.amiiboapi.com/api/amiibo/?gameseries=" + searchInput;
+            this.url = url;
+        }
+        else
+        {
+            Toast.makeText(SearchScreen.this, "Invalid Input", Toast.LENGTH_LONG).show();
+        }
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override

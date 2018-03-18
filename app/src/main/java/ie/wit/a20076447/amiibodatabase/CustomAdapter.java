@@ -66,7 +66,7 @@ public class CustomAdapter extends BaseAdapter{
         list_tailID.setText(tempAmiibo.getTailID());
         //list_image.setImageDrawable(tempAmiibo.getImage());
 
-        String URL1 = list_image.toString();
+        String URL1 = amiibos.get(i).getImage();
 
         list_image.setTag(URL1);
         new DownloadImagesTask().execute(list_image);
