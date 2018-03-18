@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchScreen" />
-        <activity android:name=".StartScreen"></activity>
+        <activity android:name=".AmiiboListActivity"></activity>
     </application>
 
 </manifest>

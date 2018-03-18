@@ -22,108 +22,36 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private RequestQueue mQueue;
-
-    private ArrayList<Amiibo> amiiboList = new ArrayList<>();
-
+    ImageView mario_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonParse = findViewById(R.id.button_parse);
-
-        listView = findViewById(R.id.listView_result);
-
-        mQueue = Volley.newRequestQueue(this);
-
-        configureButton();
-
-        amiiboList.clear();
-        jsonParse();
-
-        buttonParse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                fillListView();
-            }
-        });
-
+        AmiiboListButton();
 
     }
 
-    private void configureButton() {
 
-        Button switchButton = (Button)findViewById(R.id.buttonSearch);
+    private void AmiiboListButton() {
+
+        ImageView mario_icon = (ImageView) findViewById(R.id.button_art);
+        Button switchButton = (Button)findViewById(R.id.button_listAmiibos);
         switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SearchScreen.class));
+                startActivity(new Intent(MainActivity.this, AmiiboListActivity.class));
 
             }
         });
-    }
-
-
-    private void jsonParse() {
-        String url = "http://www.amiiboapi.com/api/amiibo/";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("amiibo");
-
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject amiibos = jsonArray.getJSONObject(i);
-
-                                String amiiboSeries = amiibos.getString("amiiboSeries");
-                                String character = amiibos.getString("character");
-                                String gameSeries = amiibos.getString("gameSeries");
-                                String headID = amiibos.getString("head");
-                                String image = amiibos.getString("image");
-                                String amiiboName = amiibos.getString("name");
-
-                                JSONObject nestObj = amiibos.getJSONObject("release");
-                                String au = nestObj.getString("au");
-                                String eu = nestObj.getString("eu");
-                                String jp = nestObj.getString("jp");
-                                String na = nestObj.getString("na");
-
-                                String tailID = amiibos.getString("tail");
-                                String type = amiibos.getString("type");
-
-                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
-                                amiiboList.add(amiibo);
-
-
-
-
-
-                                //mTextViewResult.append(amiibo.toString());
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+        mario_icon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AmiiboListActivity.class));
+
             }
         });
-
-        mQueue.add(request);
     }
-
-    private void fillListView() {
-
-        CustomAdapter myCustomAdapter = new CustomAdapter(MainActivity.this, amiiboList);
-        listView.setAdapter(myCustomAdapter);
-    }
-
 
 }
