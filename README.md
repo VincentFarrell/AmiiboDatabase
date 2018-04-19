@@ -1,5 +1,6 @@
  README
- ### Amiibo Database ###
+ ### Amiibo Database V2 ###
+  ## Version 2 Of AmiiboDatabase App##
   
 * Author: Vincent Farrell
 * Student Number: 20076447
@@ -17,7 +18,3 @@
     from the URL with the added name input ( " amiiboapi.com/api/amiibo/ ?(name)/(id)/(gameseries)/  [userInput] " )
   
  ### Known Bugs ###
- [As of 18/03/2018]
-* Images Do not update quickly whilst scrolling through ListView
-* If no Radio Button is selected, it will default to search for Amiibo Name. 
-* Search field requires the full input for AmiiboSeries/Gameseries etc.
