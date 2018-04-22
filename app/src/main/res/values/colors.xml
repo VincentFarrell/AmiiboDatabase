@@ -5,4 +5,6 @@
     <color name="colorAccent">#ff5e00</color>
     <color name="fullBlack">#000000</color>
     <color name="fullWhite">#ffffff</color>
+    <color name="navBlue">#0066e9</color>
+    <color name="buttonClick">#c8616161</color>
 </resources>

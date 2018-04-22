@@ -12,7 +12,9 @@
         android:layout_height="77dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
         android:text="Image" />
 
@@ -30,45 +32,55 @@
         android:id="@+id/list_gameSeries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="game"
-        android:textSize="14dp"
-        android:textColor="@android:color/black"
+        android:layout_below="@+id/list_amiiboName"
         android:layout_toRightOf="@+id/list_image"
-        android:layout_below="@+id/list_amiiboName"/>
+        android:text="game"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
 
     <TextView
         android:id="@+id/list_amiiboSeries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12dp"
-        android:textColor="@android:color/black"
         android:layout_below="@+id/list_gameSeries"
         android:layout_toRightOf="@+id/list_image"
-        android:text="amiiboseries" />
+        android:text="amiiboseries"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/list_headID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/list_amiiboSeries"
+        android:layout_toRightOf="@+id/list_image"
         android:text="HeadID"
         android:textColor="@android:color/black"
-        android:textSize="12dp"
-        android:layout_toRightOf="@+id/list_image"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/idBreak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/list_amiiboSeries"
-        />
+        android:layout_marginStart="55dp"
+        android:layout_toRightOf="@+id/list_image"
+        android:text="/"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12dp" />
 
 
     <TextView
         android:id="@+id/list_tailID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12dp"
-        android:textColor="@android:color/darker_gray"
         android:layout_alignBaseline="@+id/list_headID"
         android:layout_alignBottom="@+id/list_headID"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="62dp"
         android:layout_toEndOf="@+id/list_image"
-        android:text="TailID" />
+        android:text="TailID"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
 
 
 </android.widget.RelativeLayout>

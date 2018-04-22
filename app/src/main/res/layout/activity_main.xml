@@ -33,6 +33,7 @@
 
     <ImageView
         android:id="@+id/button_art"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_above="@+id/button_listAmiibos"

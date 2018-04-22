@@ -8,6 +8,15 @@
     android:padding="10dp"
     tools:context="ie.wit.a20076447.amiibodatabase.AboutActivity">
 
+    <Button
+        android:id="@+id/back_Button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/back_icon"
+        android:clickable="true" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -78,26 +87,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:text="Click Link to Github"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
 
     <Button
         android:id="@+id/github_Button"
-        android:clickable="true"
         android:layout_width="125dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp"
         android:background="@drawable/github_logo"
-        android:onClick="githubButton"/>
-
-    <Button
-        android:id="@+id/back_Button"
         android:clickable="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/back_icon" />
+        android:onClick="githubButton" />
 
 </android.widget.RelativeLayout>
