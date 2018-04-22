@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backdrop3"
+    android:padding="10dp"
+    tools:context="ie.wit.a20076447.amiibodatabase.AboutActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="141dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/about_header" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="This App is a college assignment designed as a database for Amiibo figurines. Amiibos and any assets used as such belong to Nintendo®."
+        android:textAlignment="center"
+        android:textColor="@color/fullBlack" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:text="This app is Nonprofit and solely for educational uses."
+        android:textAlignment="center"
+        android:textColor="@color/fullBlack"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginTop="46dp"
+        android:text="Developer:  Vincent Farrell \nEmail: Vincentfarrell98@gmail.com   "
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/fullBlack"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteY="373dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/amiibo_small_logo" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/nintendo_logo" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:text="Click Link to Github"
+        android:textSize="10sp"/>
+
+    <Button
+        android:id="@+id/github_Button"
+        android:clickable="true"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="93dp"
+        android:background="@drawable/github_logo"
+        android:onClick="githubButton"/>
+
+    <Button
+        android:id="@+id/back_Button"
+        android:clickable="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/back_icon" />
+
+</android.widget.RelativeLayout>
