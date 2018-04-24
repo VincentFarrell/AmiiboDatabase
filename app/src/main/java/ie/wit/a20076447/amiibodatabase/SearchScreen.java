@@ -67,7 +67,7 @@ public class SearchScreen extends AppCompatActivity {
                         choice = item;
                         break;
                 }
-                builder.setMessage("Please Choose Type");
+                builder.setMessage("Please Choose Search Type");
             }
         });
 
@@ -167,7 +167,7 @@ public class SearchScreen extends AppCompatActivity {
 
 
 
-                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
+                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image, au, eu, jp, na, type, character);
                                 amiiboSearchList.add(amiibo);
 
 

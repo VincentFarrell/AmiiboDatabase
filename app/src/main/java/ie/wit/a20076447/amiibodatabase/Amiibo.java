@@ -21,14 +21,19 @@ public class Amiibo {
 
     }
 
-    public Amiibo(String amiiboName, String amiiboSeries, String gameSeries, String headID, String tailID, String image)
-    {
+    public Amiibo(String amiiboName, String amiiboSeries, String gameSeries, String headID,  String tailID, String image, String releaseAU, String releaseEU, String releaseJP, String releaseNA, String type, String character) {
         this.amiiboSeries = amiiboSeries;
+        this.character = character;
         this.gameSeries = gameSeries;
         this.headID = headID;
         this.image = image;
         this.amiiboName = amiiboName;
+        this.releaseEU = releaseEU;
+        this.releaseAU = releaseAU;
+        this.releaseJP = releaseJP;
+        this.releaseNA = releaseNA;
         this.tailID = tailID;
+        this.type = type;
     }
 
 
@@ -38,6 +43,14 @@ public class Amiibo {
 
     public void setAmiiboSeries(String amiiboSeries) {
         this.amiiboSeries = amiiboSeries;
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
     }
 
     public String getGameSeries() {
@@ -72,11 +85,51 @@ public class Amiibo {
         this.amiiboName = amiiboName;
     }
 
+    public String getReleaseEU() {
+        return releaseEU;
+    }
+
+    public void setReleaseEU(String releaseEU) {
+        this.releaseEU = releaseEU;
+    }
+
+    public String getReleaseAU() {
+        return releaseAU;
+    }
+
+    public void setReleaseAU(String releaseAU) {
+        this.releaseAU = releaseAU;
+    }
+
+    public String getReleaseJP() {
+        return releaseJP;
+    }
+
+    public void setReleaseJP(String releaseJP) {
+        this.releaseJP = releaseJP;
+    }
+
+    public String getReleaseNA() {
+        return releaseNA;
+    }
+
+    public void setReleaseNA(String releaseNA) {
+        this.releaseNA = releaseNA;
+    }
+
     public String getTailID() {
         return tailID;
     }
 
     public void setTailID(String tailID) {
         this.tailID = tailID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

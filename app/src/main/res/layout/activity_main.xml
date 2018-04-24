@@ -19,8 +19,9 @@
         android:background="@drawable/pipe_button"
         android:fontFamily="sans-serif"
         android:text="Show Amiibos"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <ImageView

@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -28,8 +31,10 @@ public class AmiiboListActivity extends AppCompatActivity {
 
     private ListView listView;
     private RequestQueue mQueue;
+    private String AmiiboData;
 
     private ArrayList<Amiibo> amiiboList = new ArrayList<>();
+
 
 
     @Override
@@ -39,6 +44,23 @@ public class AmiiboListActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView_result);
 
+        ArrayAdapter<Amiibo> arAdapter = new ArrayAdapter<Amiibo>(AmiiboListActivity.this,
+                android.R.layout.simple_list_item_1, amiiboList);
+
+        listView.setAdapter(arAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object obj = listView.getAdapter().getItem(i);
+                AmiiboData = obj.toString();
+
+
+                Intent intent = new Intent(AmiiboListActivity.this, InfoListView.class);
+                intent.putExtra("AmiiboID", AmiiboData);
+                startActivity(intent);
+            }
+        });
         mQueue = Volley.newRequestQueue(this);
 
         configureSearchButton();
@@ -49,9 +71,16 @@ public class AmiiboListActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public String toString(){
+        return AmiiboData;
+    }
+
+
+
     private void configureSearchButton() {
 
-        Button switchButton = (Button)findViewById(R.id.buttonSearch);
+        Button switchButton = (Button) findViewById(R.id.buttonSearch);
         switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +89,6 @@ public class AmiiboListActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     private void jsonParse() {
@@ -91,9 +119,10 @@ public class AmiiboListActivity extends AppCompatActivity {
                                 String tailID = amiibos.getString("tail");
                                 String type = amiibos.getString("type");
 
-                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image);
+                                Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image, au, eu, jp, na, type, character);
                                 amiiboList.add(amiibo);
 
+//                                AmiiboID = headID + tailID;
 
                                 fillListView();
 

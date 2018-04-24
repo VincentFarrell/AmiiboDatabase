@@ -6,16 +6,15 @@
 
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
         android:icon="@drawable/mario_art"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/mario_icon_new"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppActionBarTheme"
             android:logo="@mipmap/ic_launcher"
-            >
+            android:theme="@style/AppActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +23,8 @@
         </activity>
         <activity android:name=".SearchScreen" />
         <activity android:name=".AmiiboListActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".InfoListView"></activity>
     </application>
 
 </manifest>
