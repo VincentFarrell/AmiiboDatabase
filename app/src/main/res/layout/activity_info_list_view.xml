@@ -1,16 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.wit.a20076447.amiibodatabase.InfoListView">
+    android:orientation="vertical"
+    android:background="@drawable/backdrop3"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
 
-    <ListView
-        android:id="@+id/listView12"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+    <ImageView
+        android:id="@+id/info_image"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:text="Image" />
 
+    <TextView
+        android:id="@+id/info_amiiboName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_image"
+        android:layout_centerHorizontal="true"
+        android:text="Name"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/info_gameSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_amiiboName"
+        android:layout_centerHorizontal="true"
+        android:text="game"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_amiiboSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_gameSeries"
+        android:layout_centerHorizontal="true"
+        android:text="amiiboseries"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/info_headID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/idBreak"
+        android:layout_alignBottom="@+id/idBreak"
+        android:layout_toStartOf="@+id/info_gameSeries"
+        android:text="HeadID"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/idBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/info_tailID"
+        android:layout_alignBottom="@+id/info_tailID"
+        android:layout_centerHorizontal="true"
+        android:text="/"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12dp" />
+
+
+    <TextView
+        android:id="@+id/info_tailID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_amiiboSeries"
+        android:layout_toEndOf="@+id/info_gameSeries"
+        android:text="TailID"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/info_auRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_headID"
+        android:layout_centerHorizontal="true"
+        android:text="au"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_euRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_auRelease"
+        android:layout_centerHorizontal="true"
+        android:text="eu"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_jpRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_euRelease"
+        android:layout_centerHorizontal="true"
+        android:text="jp"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_naRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_jpRelease"
+        android:layout_centerHorizontal="true"
+        android:text="na"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_naRelease"
+        android:layout_centerHorizontal="true"
+        android:text="type"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/info_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_type"
+        android:layout_centerHorizontal="true"
+        android:text="character"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
 </android.widget.RelativeLayout>

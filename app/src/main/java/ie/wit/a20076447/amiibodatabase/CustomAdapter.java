@@ -47,6 +47,8 @@ public class CustomAdapter extends BaseAdapter{
             view = LayoutInflater.from(mContext).inflate(R.layout.list_item_rows, viewGroup, false);
         }
 
+
+
         Amiibo tempAmiibo = (Amiibo) getItem(i);
 
 

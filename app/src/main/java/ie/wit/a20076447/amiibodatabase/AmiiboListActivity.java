@@ -52,12 +52,23 @@ public class AmiiboListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Object obj = listView.getAdapter().getItem(i);
-                AmiiboData = obj.toString();
-
+                Amiibo obj = (Amiibo) listView.getAdapter().getItem(i);
+                String[] amiiboData = new String[12];
+                amiiboData[0] = obj.getAmiiboName();
+                amiiboData[1] = obj.getAmiiboSeries();
+                amiiboData[2] = obj.getGameSeries();
+                amiiboData[3] = obj.getHeadID();
+                amiiboData[4] = obj.getTailID();
+                amiiboData[5] = obj.getImage();
+                amiiboData[6] = obj.getReleaseAU();
+                amiiboData[7] = obj.getReleaseEU();
+                amiiboData[8] = obj.getReleaseJP();
+                amiiboData[9] = obj.getReleaseNA();
+                amiiboData[10] = obj.getType();
+                amiiboData[11] = obj.getCharacter();
 
                 Intent intent = new Intent(AmiiboListActivity.this, InfoListView.class);
-                intent.putExtra("AmiiboID", AmiiboData);
+                intent.putExtra("AmiiboData", amiiboData);
                 startActivity(intent);
             }
         });
