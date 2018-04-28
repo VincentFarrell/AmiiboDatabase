@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "54766813084",
+    "firebase_url": "https://amiibodatabase-7a56b.firebaseio.com",
+    "project_id": "amiibodatabase-7a56b",
+    "storage_bucket": "amiibodatabase-7a56b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54766813084:android:c82f9f72c621224c",
+        "android_client_info": {
+          "package_name": "ie.wit.a20076447.amiibodatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54766813084-5j59gji1ql47m7d8541eur6koa2ad1bc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.wit.a20076447.amiibodatabase",
+            "certificate_hash": "527350245318f89f29ac6d9c67cdfe4af39cbbec"
+          }
+        },
+        {
+          "client_id": "54766813084-quj1gh5hcdk32g3or4vh97rtkh64kk0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh0vr7PzNwfsNWTrBJx5_tKftg-Tip760"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54766813084-quj1gh5hcdk32g3or4vh97rtkh64kk0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

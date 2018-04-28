@@ -139,4 +139,13 @@
         android:text="character"
         android:textColor="@android:color/black"
         android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/addAmiibo_Button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/info_character"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/about_icon" />
 </android.widget.RelativeLayout>

@@ -1,11 +1,14 @@
 package ie.wit.a20076447.amiibodatabase;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -45,6 +48,37 @@ public class SearchScreen extends AppCompatActivity {
         configureBackButton();
 
         listView = findViewById(R.id.listView_result);
+
+        ArrayAdapter<Amiibo> arAdapter = new ArrayAdapter<Amiibo>(SearchScreen.this,
+                android.R.layout.simple_list_item_1, amiiboSearchList);
+
+        listView.setAdapter(arAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Amiibo obj = (Amiibo) listView.getAdapter().getItem(i);
+
+                String[] amiiboData = new String[12];
+                amiiboData[0] = obj.getAmiiboName();
+                amiiboData[1] = obj.getAmiiboSeries();
+                amiiboData[2] = obj.getGameSeries();
+                amiiboData[3] = obj.getHeadID();
+                amiiboData[4] = obj.getTailID();
+                amiiboData[5] = obj.getImage();
+                amiiboData[6] = obj.getReleaseAU();
+                amiiboData[7] = obj.getReleaseEU();
+                amiiboData[8] = obj.getReleaseJP();
+                amiiboData[9] = obj.getReleaseNA();
+                amiiboData[10] = obj.getType();
+                amiiboData[11] = obj.getCharacter();
+
+
+                Intent intent = new Intent(SearchScreen.this, InfoListView.class);
+                intent.putExtra("AmiiboData", amiiboData);
+                startActivity(intent);
+            }
+        });
 
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(SearchScreen.this);
@@ -157,10 +191,20 @@ public class SearchScreen extends AppCompatActivity {
                                 String amiiboName = amiibos.getString("name");
 
                                 JSONObject nestObj = amiibos.getJSONObject("release");
-                                String au = nestObj.getString("au");
-                                String eu = nestObj.getString("eu");
-                                String jp = nestObj.getString("jp");
-                                String na = nestObj.getString("na");
+                                String au = nestObj.optString("au");
+                                String eu = nestObj.optString("eu");
+                                String jp = nestObj.optString("jp");
+                                String na = nestObj.optString("na");
+
+                                if(au == null) {
+                                    au = "N/A";
+                                } if (eu == null) {
+                                    eu = "N/A";
+                                } if (jp == null) {
+                                    jp = "N/A";
+                                } if (na == null) {
+                                    na = "N/A";
+                                }
 
                                 String tailID = amiibos.getString("tail");
                                 String type = amiibos.getString("type");

@@ -20,6 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +44,7 @@ public class AmiiboListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amiibo_list);
 
+
         listView = findViewById(R.id.listView_result);
 
         ArrayAdapter<Amiibo> arAdapter = new ArrayAdapter<Amiibo>(AmiiboListActivity.this,
@@ -53,6 +56,7 @@ public class AmiiboListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Amiibo obj = (Amiibo) listView.getAdapter().getItem(i);
+
                 String[] amiiboData = new String[12];
                 amiiboData[0] = obj.getAmiiboName();
                 amiiboData[1] = obj.getAmiiboSeries();
@@ -67,6 +71,7 @@ public class AmiiboListActivity extends AppCompatActivity {
                 amiiboData[10] = obj.getType();
                 amiiboData[11] = obj.getCharacter();
 
+
                 Intent intent = new Intent(AmiiboListActivity.this, InfoListView.class);
                 intent.putExtra("AmiiboData", amiiboData);
                 startActivity(intent);
@@ -80,13 +85,6 @@ public class AmiiboListActivity extends AppCompatActivity {
         jsonParse();
 
     }
-
-
-    @Override
-    public String toString(){
-        return AmiiboData;
-    }
-
 
 
     private void configureSearchButton() {
@@ -122,10 +120,20 @@ public class AmiiboListActivity extends AppCompatActivity {
                                 String amiiboName = amiibos.getString("name");
 
                                 JSONObject nestObj = amiibos.getJSONObject("release");
-                                String au = nestObj.getString("au");
-                                String eu = nestObj.getString("eu");
-                                String jp = nestObj.getString("jp");
-                                String na = nestObj.getString("na");
+                                String au = nestObj.optString("au");
+                                String eu = nestObj.optString("eu");
+                                String jp = nestObj.optString("jp");
+                                String na = nestObj.optString("na");
+
+                                if(au == null) {
+                                    au = "N/A";
+                                } if (eu == null) {
+                                    eu = "N/A";
+                                } if (jp == null) {
+                                    jp = "N/A";
+                                } if (na == null) {
+                                    na = "N/A";
+                                }
 
                                 String tailID = amiibos.getString("tail");
                                 String type = amiibos.getString("type");
@@ -133,7 +141,6 @@ public class AmiiboListActivity extends AppCompatActivity {
                                 Amiibo amiibo = new Amiibo(amiiboName, amiiboSeries, gameSeries, headID, tailID, image, au, eu, jp, na, type, character);
                                 amiiboList.add(amiibo);
 
-//                                AmiiboID = headID + tailID;
 
                                 fillListView();
 
