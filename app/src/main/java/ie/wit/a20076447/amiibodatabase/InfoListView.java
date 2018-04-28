@@ -42,24 +42,24 @@ public class InfoListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_list_view);
 
-        addAmiiboButton = (Button) findViewById(R.id.addAmiibo_Button);
+        addAmiiboButton = (Button)findViewById(R.id.addAmiibo_Button);
 
         Bundle bundle = getIntent().getExtras();
 
         amiiboData = (String[]) bundle.get("AmiiboData");
 
 
-        amiiboObj = new Amiibo(amiiboData[0], amiiboData[1], amiiboData[2], amiiboData[3], amiiboData[4], amiiboData[5],
-                amiiboData[6], amiiboData[7], amiiboData[8], amiiboData[9], amiiboData[10], amiiboData[11]);
+        amiiboObj = new Amiibo(amiiboData[0],amiiboData[1],amiiboData[2],amiiboData[3],amiiboData[4],amiiboData[5],
+                amiiboData[6],amiiboData[7],amiiboData[8],amiiboData[9],amiiboData[10],amiiboData[11]);
 
 
-        final String amiiboID = (amiiboData[3] + "-" + amiiboData[4]);
+        final String amiiboID = (amiiboData[3]+"-"+amiiboData[4]);
 
         addAmiiboButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                addAmiibo(amiiboID);
+                onClickAddAmiibo(amiiboID);
 
             }
         });
@@ -92,7 +92,63 @@ public class InfoListView extends AppCompatActivity {
         image.setTag(amiiboData[5]);
         new DownloadImagesTask().execute(image);
 
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Saved Amiibos").addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if (amiiboID == null) {
+                            addAmiiboButton.setBackgroundResource(R.drawable.add_icon);
+                        }
+                        else if (dataSnapshot.hasChild(amiiboID)) {
+                            addAmiiboButton.setBackgroundResource(R.drawable.added_icon);
+                        }
+                        else {
+                            addAmiiboButton.setBackgroundResource(R.drawable.add_icon);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
     }
+
+
+    public void onClickAddAmiibo(final String amiiboID) {
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Saved Amiibos").addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        // [START_EXCLUDE]
+                        if (amiiboID == null) {
+                            Toast.makeText(InfoListView.this,"Error could not fetch Amiibo", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (dataSnapshot.hasChild(amiiboID)) {
+                            Toast.makeText(InfoListView.this,"This Amiibo is already in MyList", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            addAmiibo(amiiboID);
+                        }
+
+//                        // [END_EXCLUDE]
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+//                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+//                        // [START_EXCLUDE]
+//                        setEditingEnabled(true);
+//                        // [END_EXCLUDE]
+                    }
+                });
+        // [END single_value_read]
+    }
+
 
     public void addAmiibo(String amiiboID) {
 

@@ -147,5 +147,5 @@
         android:layout_below="@+id/info_character"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@drawable/about_icon" />
+        android:background="@drawable/load_icon" />
 </android.widget.RelativeLayout>
