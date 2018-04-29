@@ -20,7 +20,7 @@
         android:fontFamily="sans-serif"
         android:text="Show Amiibos"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/fullBlack"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -46,11 +46,16 @@
 
     <Button
         android:id="@+id/myAmiibos_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:layout_below="@+id/amiibo_logo"
         android:layout_centerHorizontal="true"
-        android:text="Button" />
+        android:background="@drawable/box_button"
+        android:text="My Amiibos"
+        android:textAlignment="center"
+        android:textColor="@color/fullBlack"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 </android.widget.RelativeLayout>

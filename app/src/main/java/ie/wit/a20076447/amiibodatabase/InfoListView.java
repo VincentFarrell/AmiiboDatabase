@@ -35,6 +35,7 @@ public class InfoListView extends AppCompatActivity {
     private Amiibo amiiboObj = new Amiibo();
 
     Button addAmiiboButton;
+    Button deleteAmiiboButton;
 
 
     @Override
@@ -43,6 +44,8 @@ public class InfoListView extends AppCompatActivity {
         setContentView(R.layout.activity_info_list_view);
 
         addAmiiboButton = (Button)findViewById(R.id.addAmiibo_Button);
+        deleteAmiiboButton = (Button)findViewById(R.id.deleteAmiibo_button);
+
 
         Bundle bundle = getIntent().getExtras();
 
@@ -61,6 +64,13 @@ public class InfoListView extends AppCompatActivity {
 
                 onClickAddAmiibo(amiiboID);
 
+            }
+        });
+
+        deleteAmiiboButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteAmiibo(amiiboID);
             }
         });
 
@@ -104,9 +114,11 @@ public class InfoListView extends AppCompatActivity {
                         }
                         else if (dataSnapshot.hasChild(amiiboID)) {
                             addAmiiboButton.setBackgroundResource(R.drawable.added_icon);
+                            setDeleteEnabled(true);
                         }
                         else {
                             addAmiiboButton.setBackgroundResource(R.drawable.add_icon);
+                            setDeleteEnabled(false);
                         }
                     }
                     @Override
@@ -140,10 +152,10 @@ public class InfoListView extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-//                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-//                        // [START_EXCLUDE]
-//                        setEditingEnabled(true);
-//                        // [END_EXCLUDE]
+                        Log.w("getAmiibo:onCancelled", databaseError.toException());
+                        // [START_EXCLUDE]
+
+                        // [END_EXCLUDE]
                     }
                 });
         // [END single_value_read]
@@ -155,11 +167,29 @@ public class InfoListView extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference("Saved Amiibos/"+ amiiboID);
         mDatabase.setValue(amiiboObj);
 
-        Toast.makeText(this, "Amiibo Added to MyList", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Amiibo Added to MyAmiiboList", Toast.LENGTH_SHORT).show();
 
         addAmiiboButton.setBackgroundResource(R.drawable.added_icon);
 
 
+    }
+
+    public void deleteAmiibo(String amiiboID) {
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("Saved Amiibos/"+ amiiboID);
+        mDatabase.removeValue();
+
+        Toast.makeText(this, "Amiibo Removed from MyAmiiboList", Toast.LENGTH_SHORT).show();
+
+        addAmiiboButton.setBackgroundResource(R.drawable.add_icon);
+    }
+
+    private void setDeleteEnabled(boolean enabled) {
+        if (enabled) {
+            deleteAmiiboButton.setVisibility(View.VISIBLE);
+        } else {
+            deleteAmiiboButton.setVisibility(View.GONE);
+        }
     }
 
 }

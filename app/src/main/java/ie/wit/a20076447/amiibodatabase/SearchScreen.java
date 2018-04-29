@@ -196,14 +196,14 @@ public class SearchScreen extends AppCompatActivity {
                                 String jp = nestObj.optString("jp");
                                 String na = nestObj.optString("na");
 
-                                if(au == null) {
-                                    au = "N/A";
-                                } if (eu == null) {
-                                    eu = "N/A";
-                                } if (jp == null) {
-                                    jp = "N/A";
-                                } if (na == null) {
-                                    na = "N/A";
+                                if(au == "null") {
+                                    au = "Not Released";
+                                } if (eu == "null") {
+                                    eu = "Not Released";
+                                } if (jp == "null") {
+                                    jp = "Not Released";
+                                } if (na == "null") {
+                                    na = "Not Released";
                                 }
 
                                 String tailID = amiibos.getString("tail");

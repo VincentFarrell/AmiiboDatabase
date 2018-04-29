@@ -11,18 +11,19 @@
     android:background="@drawable/backdrop3"
     tools:context="ie.wit.a20076447.amiibodatabase.MyAmiiboList">
 
-    <!--<Button-->
-        <!--android:id="@+id/buttonSearch"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:background="@drawable/search_icon"-->
-        <!--android:clickable="true" />-->
+    <Button
+        android:id="@+id/buttonCreate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/add_icon"
+        android:clickable="true" />
 
     <ListView
-        android:id="@+id/listView_asd"
+        android:id="@+id/listView_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"

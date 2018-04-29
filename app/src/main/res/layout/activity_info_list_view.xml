@@ -148,4 +148,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
         android:background="@drawable/load_icon" />
+
+    <Button
+        android:id="@+id/deleteAmiibo_button"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/info_character"
+        android:layout_marginTop="47dp"
+        android:layout_toEndOf="@+id/addAmiibo_Button"
+        android:background="@drawable/delete_icon" />
 </android.widget.RelativeLayout>
