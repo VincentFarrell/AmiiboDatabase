@@ -8,7 +8,7 @@
     android:paddingEnd="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:background="@drawable/backdrop3"
+    android:background="@drawable/backdrop"
     tools:context="ie.wit.a20076447.amiibodatabase.MyAmiiboList">
 
     <Button
