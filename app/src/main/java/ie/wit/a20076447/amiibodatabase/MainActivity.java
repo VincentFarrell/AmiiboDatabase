@@ -36,9 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.actionBar);
-
         AmiiboListButton();
+        MyAmiibosListButton();
 
     }
 
@@ -60,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     private void AmiiboListButton() {
 
         ImageView mario_icon = (ImageView) findViewById(R.id.button_art);
-        Button switchButton = (Button) findViewById(R.id.button_listAmiibos);
-        switchButton.setOnClickListener(    new View.OnClickListener() {
+        Button AmiiboListButton = (Button) findViewById(R.id.button_listAmiibos);
+        AmiiboListButton.setOnClickListener(    new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, AmiiboListActivity.class));
@@ -75,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void MyAmiibosListButton() {
+
+        Button MyAmiiboListButton = (Button)findViewById(R.id.myAmiibos_button);
+        MyAmiiboListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MyAmiiboList.class));
+            }
+        });
+
     }
 
 }

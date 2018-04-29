@@ -24,7 +24,8 @@
         <activity android:name=".SearchScreen" />
         <activity android:name=".AmiiboListActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".InfoListView"></activity>
+        <activity android:name=".InfoListView" />
+        <activity android:name=".MyAmiiboList"></activity>
     </application>
 
 </manifest>

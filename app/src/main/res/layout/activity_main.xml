@@ -44,5 +44,13 @@
         app:srcCompat="@drawable/mario_art"
         android:clickable="true" />
 
+    <Button
+        android:id="@+id/myAmiibos_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amiibo_logo"
+        android:layout_centerHorizontal="true"
+        android:text="Button" />
+
 
 </android.widget.RelativeLayout>

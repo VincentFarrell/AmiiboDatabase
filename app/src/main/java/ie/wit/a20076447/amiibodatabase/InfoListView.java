@@ -94,13 +94,13 @@ public class InfoListView extends AppCompatActivity {
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Saved Amiibos").addListenerForSingleValueEvent(
+        mDatabase.child("Saved Amiibos").addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         if (amiiboID == null) {
-                            addAmiiboButton.setBackgroundResource(R.drawable.add_icon);
+                            Toast.makeText(InfoListView.this,"Error could not get AmiiboID", Toast.LENGTH_SHORT).show();
                         }
                         else if (dataSnapshot.hasChild(amiiboID)) {
                             addAmiiboButton.setBackgroundResource(R.drawable.added_icon);
