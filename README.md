@@ -1,4 +1,4 @@
- Download APK Here - <a href="https://drive.google.com/open?id=1ziDFZUN6he2n-NA48dRrJ1oxomZNdaye" download="AmiiboDatabase.APK">Amiibo Database.APK</a>
+ Download APK Here - <a href="https://drive.google.com/open?id=18tbLlA6nc2HPfJUd9QDUOyrHbNPtWx9f" download="AmiiboDatabase.APK">Amiibo Database.APK</a>
  ### Amiibo Database V2 ###
   ## Version 2 Of AmiiboDatabase App
   
