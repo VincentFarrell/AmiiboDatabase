@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AmiiboDatabase.iml" filepath="$PROJECT_DIR$/AmiiboDatabase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/amiibodatabase.iml" filepath="$PROJECT_DIR$/amiibodatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

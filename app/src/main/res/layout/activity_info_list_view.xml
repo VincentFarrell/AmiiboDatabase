@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backdrop"
@@ -8,215 +9,341 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
 
-    <TextView
-        android:id="@+id/idBreak3"
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/info_headID"
-        android:layout_alignBottom="@+id/info_headID"
-        android:layout_toEndOf="@+id/info_headID"
-        android:text="/"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="12dp" />
-
     <ImageView
         android:id="@+id/info_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/info_auRelease"
-        android:layout_toEndOf="@+id/idBreak"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
-        android:text="Image" />
+        android:text="Image"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.461" />
 
     <TextView
         android:id="@+id/info_amiiboName"
-        android:layout_width="match_parent"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/info_image"
-        android:layout_toEndOf="@+id/info_image"
+        android:layout_below="@+id/info_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:text="Name"
         android:textColor="@color/colorAccent"
-        android:textSize="22dp" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_character"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toEndOf="@+id/info_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
 
     <TextView
         android:id="@+id/info_gameSeries"
-        android:layout_width="match_parent"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/info_amiiboSeries"
-        android:layout_marginTop="21dp"
-        android:layout_toEndOf="@+id/info_image"
+        android:layout_below="@+id/info_amiiboName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
         android:text="game"
         android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_headID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
 
     <TextView
         android:id="@+id/info_amiiboSeries"
-        android:layout_width="match_parent"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/info_character"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/info_image"
+        android:layout_below="@+id/info_gameSeries"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
         android:text="amiiboseries"
         android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_gameSeries"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
 
     <TextView
         android:id="@+id/info_headID"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/info_image"
-        android:layout_marginBottom="13dp"
-        android:layout_toEndOf="@+id/info_image"
+        android:layout_alignBaseline="@+id/idBreak"
+        android:layout_alignBottom="@+id/idBreak"
+        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@+id/info_gameSeries"
         android:text="HeadID"
         android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/addAmiibo_Button"
+        app:layout_constraintEnd_toStartOf="@+id/idBreak"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
+
+    <TextView
+        android:id="@+id/idBreak"
+        android:layout_width="10dp"
+        android:layout_height="16dp"
+        android:layout_alignBaseline="@+id/info_tailID"
+        android:layout_alignBottom="@+id/info_tailID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp"
+        android:layout_marginTop="8dp"
+        android:text="/"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/addAmiibo_Button"
+        app:layout_constraintEnd_toStartOf="@+id/info_tailID"
+        app:layout_constraintTop_toBottomOf="@+id/info_gameSeries"
+        app:layout_constraintVertical_bias="1.0" />
 
 
     <TextView
         android:id="@+id/info_tailID"
-        android:layout_width="match_parent"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/idBreak3"
-        android:layout_alignBottom="@+id/idBreak3"
-        android:layout_toEndOf="@+id/idBreak3"
+        android:layout_below="@+id/info_amiiboSeries"
+        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/info_gameSeries"
         android:text="TailID"
         android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/addAmiibo_Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_gameSeries"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/info_auRelease"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_headID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginTop="16dp"
+        android:text="au"
+        android:textColor="@android:color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_euRelease"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_type"
+        app:layout_constraintVertical_bias="0.19" />
 
     <TextView
         android:id="@+id/info_euRelease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/info_naRelease"
-        android:layout_below="@+id/flagau"
+        android:layout_width="102dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_auRelease"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="20dp"
         android:text="eu"
         android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_jpRelease"
+        app:layout_constraintEnd_toStartOf="@+id/addAmiibo_Button" />
 
     <TextView
         android:id="@+id/info_jpRelease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/info_euRelease"
-        android:layout_below="@+id/flageu"
+        android:layout_width="102dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_euRelease"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
         android:text="jp"
         android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_naRelease"
+        app:layout_constraintEnd_toStartOf="@+id/addAmiibo_Button" />
 
     <TextView
         android:id="@+id/info_naRelease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/Release"
-        android:layout_below="@+id/flagjp"
+        android:layout_width="98dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_jpRelease"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="24dp"
         android:text="na"
         android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addAmiibo_Button" />
+
+    <TextView
+        android:id="@+id/info_type"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_naRelease"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:text="type"
+        android:textColor="@android:color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/auFlag"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/info_character"
-        android:layout_width="match_parent"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/info_amiiboName"
-        android:layout_marginTop="22dp"
-        android:layout_toEndOf="@+id/info_image"
+        android:layout_below="@+id/info_type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
         android:text="character"
         android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_amiiboSeries"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
 
     <Button
         android:id="@+id/addAmiibo_Button"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/flagjp"
-        android:layout_toEndOf="@+id/info_image"
-        android:background="@drawable/load_icon" />
+        android:layout_below="@+id/info_character"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="156dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/load_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/deleteAmiibo_button"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:layout_alignTop="@+id/addAmiibo_Button"
+        android:layout_below="@+id/info_character"
+        android:layout_marginBottom="208dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/addAmiibo_Button"
-        android:background="@drawable/delete_icon" />
+        android:background="@drawable/delete_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/addAmiibo_Button"
+        app:layout_constraintTop_toBottomOf="@+id/info_tailID"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="character"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_character"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="amiibo series"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_amiiboSeries"
+        app:layout_constraintStart_toStartOf="@+id/info_amiiboSeries" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="game series"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_gameSeries"
+        app:layout_constraintStart_toEndOf="@+id/info_image" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="amiibo ID"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_headID"
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
 
     <ImageView
-        android:id="@+id/flagau"
-        android:layout_width="35dp"
+        android:id="@+id/auFlag"
+        android:layout_width="45dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/info_image"
-        android:layout_marginTop="35dp"
-        android:layout_toEndOf="@+id/info_type"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/euFlag"
+        app:layout_constraintEnd_toStartOf="@+id/info_auRelease"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/au_flag" />
 
     <ImageView
-        android:id="@+id/flageu"
-        android:layout_width="35dp"
+        android:id="@+id/euFlag"
+        android:layout_width="45dp"
         android:layout_height="35dp"
-        android:layout_alignStart="@+id/flagau"
-        android:layout_below="@+id/flagau"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/jpFlag"
+        app:layout_constraintEnd_toStartOf="@+id/info_euRelease"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/eu_flag" />
 
     <ImageView
-        android:id="@+id/flagjp"
-        android:layout_width="35dp"
+        android:id="@+id/jpFlag"
+        android:layout_width="45dp"
         android:layout_height="35dp"
-        android:layout_alignStart="@+id/flageu"
-        android:layout_below="@+id/flageu"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/naFlag"
+        app:layout_constraintEnd_toStartOf="@+id/info_jpRelease"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/jp_flag" />
 
     <ImageView
-        android:id="@+id/flagna"
-        android:layout_width="35dp"
+        android:id="@+id/naFlag"
+        android:layout_width="45dp"
         android:layout_height="35dp"
-        android:layout_alignStart="@+id/flagjp"
-        android:layout_below="@+id/flagjp"
+        android:layout_marginBottom="88dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/info_naRelease"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/na_flag" />
 
     <TextView
-        android:id="@+id/Release"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/info_type2"
-        android:layout_toEndOf="@+id/info_auRelease"
-        android:text="Amiibo Type"
-        android:textSize="10sp" />
+        android:layout_marginStart="16dp"
+        android:text="amiibo type"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/info_type"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/release2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/flagau"
-        android:layout_below="@+id/info_image"
-        android:text="Release Date" />
 
-    <TextView
-        android:id="@+id/release"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info_amiiboName"
-        android:layout_toEndOf="@+id/info_image"
-        android:text="Character"
-        android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/info_type2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/addAmiibo_Button"
-        android:layout_alignParentStart="true"
-        android:text="type"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
-
-    <TextView
-        android:id="@+id/info_auRelease3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/Release"
-        android:layout_alignTop="@+id/flagau"
-        android:text="au"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
-</android.widget.RelativeLayout>
+</android.support.constraint.ConstraintLayout>
